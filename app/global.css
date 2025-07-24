@@ -1,1 +1,38 @@
+/* app/globals.css */
+
+/* 1) Pull in all of Tailwind v4 (preflight + utilities) */
 @import 'tailwindcss';
+
+@theme {
+  --color-green-base: var(--green);
+}
+
+@layer components {
+  .btn-base {
+    @apply bg-green-base text-white border-1 border-transparent hover:border-1 hover:border-green-base hover:bg-white hover:text-green-base cursor-pointer;
+  }
+}
+
+/* 2) Your CSS variables (if any) */
+:root {
+  --green: #517664;
+}
+
+/* 3) Default the whole site to Roboto via the CSS var */
+html {
+  font-family: var(--font-roboto), sans-serif;
+}
+
+/* 4) Override all headings to use Bodoni */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-bodoni), serif;
+}
+
+.font-bodoni {
+  font-family: var(--font-bodoni), serif;
+}

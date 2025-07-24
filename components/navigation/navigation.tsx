@@ -1,57 +1,55 @@
+// app/components/Navigation.js
 'use client';
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const items = ['Bien-être', 'Cours de natation', 'Bienfaits', 'Présentation', 'Contact'];
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  const toggleMenu = () => setIsOpen(!isOpen);
+
+  const renderNavLinks = (linkClass = 'block px-3 py-2 rounded-md text-base font-bodoni text-gray-700 hover:text-green-base font-medium') =>
+    items.map((item) => (
+      <a key={item} href={`#${item.toLowerCase().replace(/ & /g, '-').replace(/\s+/g, '-')}`} className={linkClass}>
+        {item}
+      </a>
+    ));
 
   return (
-    <nav className="w-full bg-white shadow-md fixed top-0 left-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo on the left */}
-          <div className="flex-shrink-0 flex items-center">
-            <img className="h-8 w-auto" src="/logo.png" alt="Logo" />
-          </div>
+    <nav className="w-full bg-white fixed top-0 left-0 z-50 border-b border-gray-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+        {/* Logo & Title */}
+        <div className="flex items-center space-x-4">
+          <div className="flex-shrink-0 bg-gray-200 p-2">Logo</div>
+        </div>
+        <div className="text-2xl font-bodoni font-semibold">jalaprana</div>
 
-          {/* Name in the center */}
-          <div className="hidden md:flex md:items-center md:justify-center flex-1">
-            <span className="text-xl font-semibold">jalapran</span>
-          </div>
+        {/* Desktop nav links removed */}
 
-          {/* Language switcher on the right */}
-          <div className="hidden md:flex md:items-center">
-            <select className="border border-gray-300 rounded-md py-1 px-2 transition-all ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-              <option>EN</option>
-              <option>FR</option>
-              <option>ES</option>
-            </select>
-          </div>
+        {/* Language switcher */}
+        <div className="hidden md:flex md:items-center">
+          <select className="border-gray-300 rounded-md py-1 px-2 focus:outline-none ">
+            <option>EN</option>
+            <option>FR</option>
+            <option>ES</option>
+          </select>
+        </div>
 
-          {/* Mobile menu button */}
-          <div className="flex md:hidden">
-            <button onClick={toggleMenu} className="inline-flex items-center justify-center p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-              {isOpen ? <X className="h-6 w-6 transition-transform duration-200" /> : <Menu className="h-6 w-6 transition-transform duration-200" />}
-            </button>
-          </div>
+        {/* Mobile menu button */}
+        <div className="flex md:hidden ">
+          <button onClick={toggleMenu} className="p-2 rounded-md cursor-pointer focus:outline-none focus:ring-inset ">
+            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
         </div>
       </div>
 
-      {/* Mobile menu */}
-      <div className={`md:hidden transform ${isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'} overflow-hidden transition-all duration-300 ease-in-out`}>
-        <div className="px-2 pt-2 pb-3 space-y-1 bg-white">
-          {/* Centered name for mobile */}
-          <div className="flex justify-center pb-4">
-            <span className="text-xl font-semibold">jalapran</span>
-          </div>
-
-          {/* Language switcher */}
-          <div className="flex justify-center pb-4">
-            <select className="border border-gray-300 rounded-md py-1 px-2 transition-all ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+      {/* Mobile menu: links + language */}
+      <div className={`md:hidden bg-white overflow-hidden cursor-pointer transition-all duration-300 ${isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'}`}>
+        <div className="px-2 pt-2 pb-3 space-y-1">
+          {renderNavLinks()}
+          <div className="flex justify-center pt-4">
+            <select className="border-gray-300 rounded-md py-1 px-2 focus:outline-none ">
               <option>EN</option>
               <option>FR</option>
               <option>ES</option>
