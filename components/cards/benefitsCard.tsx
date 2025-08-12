@@ -43,7 +43,7 @@ const BenefitsCard: React.FC<BenefitsCardProps> = ({
   title,
   additionalInfo,
   description,
-  descriptionItems,
+  descriptionItems = [],
   href = '#',
   cta = 'En savoir plus',
   imageSrc,
