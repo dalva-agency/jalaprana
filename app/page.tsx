@@ -43,7 +43,7 @@ export default function Page() {
       <section className="mt-20">
         <header className="mb-8 text-center">
           <h1 className="text-3xl font-bold tracking-tight">Offres & Activités</h1>
-          <p className="mt-2 text-slate-600">Choisissez l'accompagnement qui vous convient.</p>
+          <p className="mt-2 text-slate-600">{`Choisissez l'accompagnement qui vous convient.`}</p>
         </header>
 
         <section className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

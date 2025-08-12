@@ -39,20 +39,7 @@ export type BenefitsCardProps = {
   index?: number; // for staggered delay
 };
 
-const accentMap = {
-  green: 'from-green-100 to-green-50 border-green-200 text-green-700',
-  amber: 'from-amber-100 to-amber-50 border-amber-200 text-amber-700',
-  teal: 'from-teal-100 to-teal-50 border-teal-200 text-teal-700',
-  sky: 'from-sky-100 to-sky-50 border-sky-200 text-sky-700',
-  rose: 'from-rose-100 to-rose-50 border-rose-200 text-rose-700',
-  emerald: 'from-emerald-100 to-emerald-50 border-emerald-200 text-emerald-700',
-  indigo: 'from-indigo-100 to-indigo-50 border-indigo-200 text-indigo-700',
-} as const;
-
-type AccentKey = keyof typeof accentMap;
-
 const BenefitsCard: React.FC<BenefitsCardProps> = ({
-  number,
   title,
   additionalInfo,
   description,
@@ -61,14 +48,12 @@ const BenefitsCard: React.FC<BenefitsCardProps> = ({
   cta = 'En savoir plus',
   imageSrc,
   imageAlt = '',
-  accent = 'emerald',
   prices,
   time,
   price,
   className = '',
   index = 0,
 }) => {
-  const accentClasses = accentMap[accent as AccentKey];
   const formattedPrice = typeof price === 'number' ? price.toFixed(2) : price;
 
   return (
@@ -150,11 +135,3 @@ const BenefitsCard: React.FC<BenefitsCardProps> = ({
 };
 
 export default BenefitsCard;
-
-// -------------------------------------------------
-// Example usage with stagger (page snippet):
-// <section className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-//   {cards.map((c, i) => (
-//     <BenefitsCard key={c.title} index={i} {...c} />
-//   ))}
-// </section>
