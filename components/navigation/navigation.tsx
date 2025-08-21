@@ -2,18 +2,34 @@
 'use client';
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import Link from 'next/link';
+import Image from 'next/image';
+import jalapranaLogo from '@/assets/images/jalaprana-logo.png';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
-  const items = ['Bien-être', 'Cours de natation', 'Bienfaits', 'Présentation', 'Contact'];
+
+  // Alternative: If you want some items to be separate pages
+  const items = [
+    { label: 'À Propos', id: 'about', href: '/about' }, // Separate page
+    { label: 'Bien-être', id: 'bien-etre', href: '/#bien-etre' }, // Section on home
+    { label: 'Cours de natation', id: 'cours', href: '/cours' }, // Separate page
+    { label: 'Bienfaits', id: 'bienfaits', href: '/#bienfaits' },
+    { label: 'Présentation', id: 'presentation', href: '/presentation' },
+    { label: 'Contact', id: 'contact', href: '/contact' }, // Separate page
+  ];
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
+  const handleLinkClick = () => {
+    setIsOpen(false);
+  };
+
   const renderNavLinks = (linkClass = 'block px-3 py-2 rounded-md text-base font-bodoni text-gray-700 hover:text-green-base font-medium') =>
     items.map((item) => (
-      <a key={item} href={`#${item.toLowerCase().replace(/ & /g, '-').replace(/\s+/g, '-')}`} className={linkClass}>
-        {item}
-      </a>
+      <Link key={item.id} href={item.href} className={linkClass} onClick={handleLinkClick}>
+        {item.label}
+      </Link>
     ));
 
   return (
@@ -21,15 +37,19 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
         {/* Logo & Title */}
         <div className="flex items-center space-x-4">
-          <div className="flex-shrink-0 bg-gray-200 p-2">Logo</div>
+          <div className="flex-shrink-0">
+            <Image src={jalapranaLogo} alt="jalaprana logo" className="h-15 w-15" />
+          </div>
         </div>
-        <div className="text-2xl font-bodoni font-semibold">jalaprana</div>
+        <div className="text-2xl font-bodoni font-semibold">
+          <Link href="/">jalaprana</Link>
+        </div>
 
-        {/* Desktop nav links removed */}
+        {/* Desktop nav links */}
 
         {/* Language switcher */}
         <div className="hidden md:flex md:items-center">
-          <select className="border-gray-300 rounded-md py-1 px-2 focus:outline-none ">
+          <select className="border-gray-300 rounded-md py-1 px-2 focus:outline-none">
             <option>EN</option>
             <option>FR</option>
             <option>ES</option>
@@ -37,8 +57,8 @@ export default function Navigation() {
         </div>
 
         {/* Mobile menu button */}
-        <div className="flex md:hidden ">
-          <button onClick={toggleMenu} className="p-2 rounded-md cursor-pointer focus:outline-none focus:ring-inset ">
+        <div className="flex md:hidden">
+          <button onClick={toggleMenu} className="p-2 rounded-md cursor-pointer focus:outline-none focus:ring-inset">
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
@@ -49,7 +69,7 @@ export default function Navigation() {
         <div className="px-2 pt-2 pb-3 space-y-1">
           {renderNavLinks()}
           <div className="flex justify-center pt-4">
-            <select className="border-gray-300 rounded-md py-1 px-2 focus:outline-none ">
+            <select className="border-gray-300 rounded-md py-1 px-2 focus:outline-none">
               <option>EN</option>
               <option>FR</option>
               <option>ES</option>

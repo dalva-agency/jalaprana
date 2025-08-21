@@ -3,14 +3,26 @@ import Image from 'next/image';
 import React from 'react';
 import home_image from '../public/assets/images/home_image.jpg';
 import BenefitsCard from '@/components/cards/benefitsCard';
+import Link from 'next/link';
+import jalapranaLogo from '@/assets/images/jalaprana-logo.png';
 
 export default function Page() {
-  const items = ['Bien-être', 'Cours de natation', 'Bienfaits', 'Présentation', 'Contact'];
+  const items = [
+    { label: 'À Propos', id: 'about', href: '/about' }, // Separate page
+    { label: 'Bien-être', id: 'bien-etre', href: '/#bien-etre' }, // Section on home
+    { label: 'Cours de natation', id: 'cours', href: '/cours' }, // Separate page
+    { label: 'Bienfaits', id: 'bienfaits', href: '/#bienfaits' },
+    { label: 'Présentation', id: 'presentation', href: '/presentation' },
+    { label: 'Contact', id: 'contact', href: '/contact' }, // Separate page
+  ];
 
   return (
     <>
+      <div className="flex justify-center">
+        <Image src={jalapranaLogo} alt="jalaprana logo" className="h-60 w-60" />
+      </div>
       <section className="relative w-full flex justify-center py-6">
-        <div className="relative w-full max-w-7xl h-[800px] border-2 border-gray-200 rounded-xl overflow-hidden">
+        <div className="relative w-full h-[800px] border-2 border-gray-200 rounded-xl overflow-hidden">
           <Image src={home_image} alt="Meditation by the sea" fill className="object-cover object-bottom" priority />
 
           {/* Dark overlay + text */}
@@ -29,13 +41,9 @@ export default function Page() {
         {/* Hero nav: fixed width, visible md+, hidden mobile */}
         <nav className="hidden md:flex absolute bottom-0 left-1/2 transform -translate-x-1/2  bg-white rounded-full shadow-lg py-3 px-6 justify-center space-x-6">
           {items.map((item) => (
-            <a
-              key={item}
-              href={`#${item.toLowerCase().replace(/ & /g, '-').replace(/\s+/g, '-')}`}
-              className="text-gray-700 font-bodoni hover:text-green-base font-medium transition whitespace-nowrap"
-            >
-              {item}
-            </a>
+            <Link key={item.id} href={item.href} className="text-gray-700 font-bodoni hover:text-green-base font-medium transition whitespace-nowrap">
+              {item.label}
+            </Link>
           ))}
         </nav>
       </section>
@@ -46,15 +54,16 @@ export default function Page() {
           <p className="mt-2 text-slate-600">{`Choisissez l'accompagnement qui vous convient.`}</p>
         </header>
 
-        <section className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <section className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 px-20">
           {/* 1) Reiki */}
           <BenefitsCard
             index={0}
             number={1}
             title="Reiki"
+            infoItems={['📍 Disponible en présentiel ou en ligne', '👕 Prévoir une tenue confortable et un espace calme']}
             description={`Méthode de soin énergétique visant à rétablir l’équilibre global du corps et de l’esprit. Par l’apposition des mains, le praticien canalise une énergie naturelle pour favoriser la relaxation profonde, réduire le stress et accompagner les mécanismes d’autorégulation de l’organisme.`}
             href="#reiki"
-            cta="Réserver"
+            cta="En savoir plus"
             imageSrc="https://images.unsplash.com/photo-1485808269728-77bb07c059a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8UmVpa2l8ZW58MHx8MHx8fDI%3D"
             imageAlt="Séance de Reiki"
             accent="emerald"
@@ -69,10 +78,11 @@ export default function Page() {
             index={1}
             number={2}
             title="Méditation"
+            infoItems={['📍 Disponible en présentiel ou en ligne', '👕 Prévoir une tenue confortable et un espace calme']}
             additionalInfo="(théorie + pratique guidée)"
             description={`Pratique mentale qui consiste à porter son attention sur l’instant présent, afin de favoriser la clarté mentale, la détente et la stabilité émotionnelle.`}
             href="#meditation"
-            cta="S'inscrire"
+            cta="En savoir plus"
             imageSrc="https://images.unsplash.com/photo-1444312645910-ffa973656eba?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8bWVkaXRhdGlvbnxlbnwwfHwwfHx8Mg%3D%3D"
             imageAlt="Séance de méditation"
             accent="amber"
@@ -88,7 +98,7 @@ export default function Page() {
 
 Aquaphobie : (re)trouver confiance et sérénité dans l’eau grâce à une approche progressive, bienveillante et individualisée. Tarif : idem natation.`}
             href="#aqua"
-            cta="Prendre rendez-vous"
+            cta="En savoir plus"
             imageSrc="https://images.unsplash.com/photo-1562205932-623cd8f3867c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YXF1YXRpYyUyMGFjdGl2aXR5JTIwcG9vbHxlbnwwfHwwfHx8Mg%3D%3D"
             imageAlt="Cours en piscine"
             accent="teal"
