@@ -5,17 +5,27 @@
 
 @theme {
   --color-green-base: var(--green);
+  --color-orange-base: var(--orange);
+  --color-blue-base: var(--blue);
 }
 
 @layer components {
-  .btn-base {
-    @apply bg-green-base text-white border-1 border-transparent hover:border-1 hover:border-green-base hover:bg-white hover:text-green-base cursor-pointer;
+  .btn-green-base {
+    @apply bg-green-base text-white border-1 py-2 px-4 border-transparent hover:border-1 hover:border-green-base hover:bg-white hover:text-green-base cursor-pointer;
+  }
+  .btn-blue-base {
+    @apply bg-blue-base text-white border-1 py-2 px-4 border-transparent hover:border-1 hover:border-blue-base hover:bg-white hover:text-blue-base cursor-pointer;
+  }
+  .btn-orange-base {
+    @apply bg-orange-base text-white border-1 py-2 px-4 border-transparent hover:border-1 hover:border-orange-base hover:bg-white hover:text-orange-base cursor-pointer;
   }
 }
 
 /* 2) Your CSS variables (if any) */
 :root {
   --green: #517664;
+  --orange: var(--color-amber-600);
+  --blue: var(--color-blue-600);
 }
 
 /* 3) Default the whole site to Roboto via the CSS var */

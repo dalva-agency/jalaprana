@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { FaEuroSign } from 'react-icons/fa';
 import { FiClock } from 'react-icons/fi';
 import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 
 export type PriceItem = {
   title?: string;
@@ -131,8 +132,9 @@ const BenefitsCard: React.FC<BenefitsCardProps> = ({
         )}
 
         <div className="mt-auto pt-2">
-          <Link href={href} className="inline-flex w-full items-center justify-center rounded-lg bg-emerald-800 px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-emerald-700">
+          <Link href={href} className="inline-flex gap-4 w-full items-center btn-green-base justify-between rounded-lg text-sm font-semibold duration-300 transition-colors ">
             {cta}
+            <ArrowRight />
           </Link>
         </div>
       </div>

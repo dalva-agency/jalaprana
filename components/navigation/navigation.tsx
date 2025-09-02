@@ -11,12 +11,10 @@ export default function Navigation() {
 
   // Alternative: If you want some items to be separate pages
   const items = [
-    { label: 'À Propos', id: 'about', href: '/about' }, // Separate page
-    { label: 'Bien-être', id: 'bien-etre', href: '/#bien-etre' }, // Section on home
-    { label: 'Cours de natation', id: 'cours', href: '/cours' }, // Separate page
-    { label: 'Bienfaits', id: 'bienfaits', href: '/#bienfaits' },
+    { label: 'Reiki', id: 'about', href: '/reiki' },
+    { label: 'Méditation', id: 'bien-etre', href: '/meditation' },
+    { label: 'Cours de natation', id: 'cours', href: '/natation' },
     { label: 'Présentation', id: 'presentation', href: '/presentation' },
-    { label: 'Contact', id: 'contact', href: '/contact' }, // Separate page
   ];
 
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -34,14 +32,16 @@ export default function Navigation() {
 
   return (
     <nav className="w-full bg-white fixed top-0 left-0 z-50 border-b border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+      <div className="max-w-7xl mx-auto flex justify-between items-center h-20">
         {/* Logo & Title */}
         <div className="flex items-center space-x-4">
           <div className="flex-shrink-0">
-            <Image src={jalapranaLogo} alt="jalaprana logo" className="h-15 w-15" />
+            <Link href="/">
+              <Image src={jalapranaLogo} alt="jalaprana logo" className="h-25 w-25" />
+            </Link>
           </div>
         </div>
-        <div className="text-2xl font-bodoni font-semibold">
+        <div className="text-2xl font-bodoni font-semibold pr-10">
           <Link href="/">jalaprana</Link>
         </div>
 
