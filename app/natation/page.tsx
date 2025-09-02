@@ -65,7 +65,7 @@ const SwimmingServicePage = () => {
         <div className="container mx-auto px-4 py-16">
           <div
             ref={(el) => {
-              sectionRefs.current.section2 = el;
+              if (el) sectionRefs.current.section1 = el;
             }}
             className={`flex flex-col lg:flex-row items-center gap-12 transition-all duration-1000 ${isVisible.section1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
           >
@@ -127,7 +127,12 @@ const SwimmingServicePage = () => {
 
         {/* Benefits Section */}
         <div className="container mx-auto px-4 py-16">
-<div ref={(el) => {sectionRefs.current.benefits = el;}} className={`transition-all duration-1000 ${isVisible.benefits ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div
+            ref={(el) => {
+              sectionRefs.current.benefits = el;
+            }}
+            className={`transition-all duration-1000 ${isVisible.benefits ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+          >
             <div className="bg-white rounded-3xl shadow-2xl border border-gray-100 p-8 md:p-12">
               <h2 className="text-3xl font-semibold text-center text-gray-800 mb-10">La natation, un sport complet pour le corps et l&apos;esprit</h2>
 

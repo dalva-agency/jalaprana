@@ -67,7 +67,7 @@ const ReikiServicePage = () => {
       <div className="container mx-auto px-4 py-16">
         <div
           ref={(el) => {
-            sectionRefs.current.section2 = el;
+            if (el) sectionRefs.current.section1 = el;
           }}
           className={`flex flex-col lg:flex-row items-center gap-12 transition-all duration-1000 ${isVisible.section1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
@@ -88,8 +88,8 @@ const ReikiServicePage = () => {
                 }
               </p>
               <p>
-                Le soin consiste en une apposition des mains sur différentes zones du corps (ou juste au-dessus), afin de canaliser <p>{`L&apos;énergie universelle`}</p> et favoriser un rééquilibrage
-                énergétique global.
+                Le soin consiste en une apposition des mains sur différentes zones du corps (ou juste au-dessus), afin de canaliser l&apos;énergie universelle et favoriser un rééquilibrage énergétique
+                global.
               </p>
               <p>
                 La séance se déroule dans le silence, dans un profond respect et une bienveillance totale. Elle se termine par un moment de retour à soi et d&apos;échange sur les ressentis, suivi de
@@ -143,7 +143,12 @@ const ReikiServicePage = () => {
 
       {/* Benefits Section */}
       <div className="container mx-auto px-4 py-16">
-<div ref={(el) => { sectionRefs.current.benefits = el; }} className={`transition-all duration-1000 ${isVisible.benefits ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div
+          ref={(el) => {
+            sectionRefs.current.benefits = el;
+          }}
+          className={`transition-all duration-1000 ${isVisible.benefits ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+        >
           <div className="bg-white rounded-3xl shadow-2xl border border-gray-100 p-8 md:p-12">
             <h2 className="text-3xl font-semibold text-center text-gray-800 mb-10">Bienfaits du Reiki</h2>
 
