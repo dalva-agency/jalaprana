@@ -80,7 +80,7 @@ const ReikiServicePage = () => {
           </div>
 
           <div className="lg:w-1/2 space-y-6">
-            <h2 className="text-3xl font-semibold text-gray-800">Déroulement de la Séance</h2>
+            <h2 className="text-3xl font-semibold text-gray-800">Déroulement de la séance</h2>
             <div className="space-y-4 text-gray-600">
               <p>
                 {
@@ -117,7 +117,7 @@ const ReikiServicePage = () => {
           </div>
 
           <div className="lg:w-1/2 space-y-6">
-            <h2 className="text-3xl font-semibold text-gray-800">Informations Pratiques</h2>
+            <h2 className="text-3xl font-semibold text-gray-800">Informations pratiques</h2>
             <div className="space-y-4">
               <div className="flex items-center gap-3">
                 <Clock className="w-6 h-6 text-green-base flex-shrink-0" />

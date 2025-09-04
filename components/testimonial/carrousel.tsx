@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { Quote, X } from 'lucide-react';
+import { GoQuote } from 'react-icons/go';
 
 interface Testimonial {
   id: number;
@@ -105,7 +106,7 @@ const TestimonialCarousel = () => {
               className="flex-shrink-0 w-80 bg-white rounded-2xl shadow-lg p-8 transform transition-all hover:scale-105 cursor-pointer hover:shadow-xl"
             >
               {/* Quote Icon */}
-              <Quote className="w-8 h-8 text-green-base mb-4 opacity-50" />
+              <Quote className="w-8 h-8 text-green-base mb-4" />
 
               {/* Testimonial Text */}
               <p className="text-gray-700 text-sm leading-relaxed mb-6 line-clamp-6">{testimonial.text}</p>
@@ -113,7 +114,7 @@ const TestimonialCarousel = () => {
               {/* Author Info */}
               <div className="flex items-center gap-4">
                 {/* Avatar */}
-                <div className="w-12 h-12 bg-gradient-to-br from-green-base to-white rounded-full flex items-center justify-center text-white font-semibold">{testimonial.avatar}</div>
+                <div className="w-12 h-12 bg-green-base rounded-full flex items-center justify-center text-white font-semibold">{testimonial.avatar}</div>
 
                 {/* Name and Location */}
                 <div>

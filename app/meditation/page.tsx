@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Clock, MapPin, Shirt, Brain, Heart, Shield, Sparkles, Focus, Lightbulb, Smile, Calendar } from 'lucide-react';
 
 const MeditationServicePage = () => {
-const [isVisible, setIsVisible] = useState<{ [key: string]: boolean }>({});
+  const [isVisible, setIsVisible] = useState<{ [key: string]: boolean }>({});
   const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
 
   useEffect(() => {
@@ -50,7 +50,7 @@ const [isVisible, setIsVisible] = useState<{ [key: string]: boolean }>({});
               animation: 'fadeIn 1s ease-out',
             }}
           >
-            Méditation Guidée
+            Méditation
           </h1>
           <p
             className="text-xl text-center text-gray-600 max-w-3xl mx-auto animate-fade-in"
@@ -65,7 +65,9 @@ const [isVisible, setIsVisible] = useState<{ [key: string]: boolean }>({});
         {/* Section 1: Image Left, Text Right */}
         <div className="container mx-auto px-4 py-16">
           <div
-            ref={(el) => { sectionRefs.current.section1 = el; }}
+            ref={(el) => {
+              sectionRefs.current.section1 = el;
+            }}
             className={`flex flex-col lg:flex-row items-center gap-12 transition-all duration-1000 ${isVisible.section1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
           >
             <div className="lg:w-1/2 w-2/2">
@@ -77,7 +79,7 @@ const [isVisible, setIsVisible] = useState<{ [key: string]: boolean }>({});
             </div>
 
             <div className="lg:w-1/2 space-y-6">
-              <h2 className="text-3xl font-semibold text-gray-800">Déroulement de la Séance</h2>
+              <h2 className="text-3xl font-semibold text-gray-800">Déroulement de la séance</h2>
               <div className="space-y-4 text-gray-600">
                 <p>
                   Chaque séance débute par un moment d&apos;accueil pour poser l&apos;intention et vous installer dans l&apos;instant présent. Vous êtes ensuite guidé(e) pas à pas, par la voix, à
@@ -93,7 +95,9 @@ const [isVisible, setIsVisible] = useState<{ [key: string]: boolean }>({});
         {/* Section 2: Text Left, Image Right */}
         <div className="container mx-auto px-4 py-16">
           <div
-            ref={(el) => { sectionRefs.current.section2 = el; }}
+            ref={(el) => {
+              sectionRefs.current.section2 = el;
+            }}
             className={`flex flex-col lg:flex-row-reverse items-center gap-12 transition-all duration-1000 ${isVisible.section2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
           >
             <div className="lg:w-1/2 w-2/2">
@@ -105,7 +109,7 @@ const [isVisible, setIsVisible] = useState<{ [key: string]: boolean }>({});
             </div>
 
             <div className="lg:w-1/2 space-y-6">
-              <h2 className="text-3xl font-semibold text-gray-800">Informations Pratiques</h2>
+              <h2 className="text-3xl font-semibold text-gray-800">Informations pratiques</h2>
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <Clock className="w-6 h-6 text-amber-600 flex-shrink-0" />
@@ -131,7 +135,12 @@ const [isVisible, setIsVisible] = useState<{ [key: string]: boolean }>({});
 
         {/* Benefits Section */}
         <div className="container mx-auto px-4 py-16">
-          <div ref={(el) => { sectionRefs.current.benefits = el; }} className={`transition-all duration-1000 ${isVisible.benefits ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div
+            ref={(el) => {
+              sectionRefs.current.benefits = el;
+            }}
+            className={`transition-all duration-1000 ${isVisible.benefits ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+          >
             <div className="bg-white rounded-3xl shadow-2xl border border-gray-100 p-8 md:p-12">
               <h2 className="text-3xl font-semibold text-center text-gray-800 mb-10">Bienfaits de la Méditation</h2>
 

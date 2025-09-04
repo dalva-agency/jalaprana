@@ -78,7 +78,7 @@ const SwimmingServicePage = () => {
             </div>
 
             <div className="lg:w-1/2 space-y-6">
-              <h2 className="text-3xl font-semibold text-gray-800">Un Accompagnement Personnalisé</h2>
+              <h2 className="text-3xl font-semibold text-gray-800">Un Accompagnement personnalisé</h2>
               <div className="space-y-4 text-gray-600">
                 <p>Mes cours de natation sont conçus pour s&apos;adapter à tous les âges et niveaux, que vous soyez débutant(e), en reprise ou à la recherche de perfectionnement.</p>
                 <p>Chaque séance se déroule dans un cadre sécurisé, bienveillant et progressif, favorisant la confiance en soi et le plaisir dans l&apos;eau.</p>
@@ -105,7 +105,7 @@ const SwimmingServicePage = () => {
             </div>
 
             <div className="space-y-6 lg:w-1/2 w-2/2">
-              <h2 className="text-3xl font-semibold text-gray-800">Informations Pratiques</h2>
+              <h2 className="text-3xl font-semibold text-gray-800">Informations pratiques</h2>
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <Clock className="w-6 h-6 text-blue-600 flex-shrink-0" />

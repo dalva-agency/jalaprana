@@ -27,7 +27,7 @@ const HeroSection = () => {
   const overlayOpacity = Math.max(0, 0.2 - scrollY / 600);
 
   return (
-    <div className="relative w-full h-[800px] border-2 border-gray-200 rounded-xl overflow-hidden">
+    <div className="relative w-full h-[800px] border-2 border-gray-200 rounded-xl mt-20 overflow-hidden">
       <Image src={home_image} alt="Meditation by the sea" fill className="object-cover object-bottom" priority />
 
       {/* Dynamic black overlay that fades with scroll */}
@@ -49,7 +49,7 @@ const HeroSection = () => {
               filter: 'drop-shadow(0 2px 4px rgba(255, 255, 255, 0.4))',
             }}
           >
-            Reiki, méditation, et cours de natation
+            Reiki, méditation <span className="text-[26px]">&</span> cours de natation
           </h1>
         </div>
         <button
@@ -75,10 +75,6 @@ export default function Page() {
 
   return (
     <>
-      <div className="flex justify-center">
-        <Image src={jalapranaLogo} alt="jalaprana logo" className="h-60 w-60" />
-      </div>
-
       {/* Add the HeroSection here */}
       <section className="relative px-6 mb-8">
         <HeroSection />

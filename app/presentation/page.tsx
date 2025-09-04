@@ -20,7 +20,7 @@ const AboutMe = () => {
         {/* Text Section with Fade Up Animation */}
         <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} className="space-y-6 order-2 lg:order-1">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.6 }}>
-            <h2 className="text-4xl lg:text-5xl font-bodoni font-bold text-slate-900 mb-2">À Propos</h2>
+            <h2 className="text-4xl lg:text-5xl font-bodoni font-bold text-slate-900 mb-2">Présentation</h2>
             <div className="w-20 h-1 bg-emerald-600 rounded-full" />
           </motion.div>
 
@@ -46,9 +46,6 @@ const AboutMe = () => {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8, duration: 0.6 }} className="flex flex-wrap gap-4 pt-4">
             <a href="#contact" className="inline-flex items-center btn-green-base font-medium rounded-lg transition-colors">
               Me Contacter
-            </a>
-            <a href="#services" className="inline-flex items-center px-6 py-3 border border-slate-300 text-slate-700 font-medium rounded-lg hover:bg-slate-50 transition-colors">
-              Découvrir mes Services
             </a>
           </motion.div>
         </motion.div>

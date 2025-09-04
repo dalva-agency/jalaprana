@@ -74,13 +74,13 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-white/10">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p className="text-xs text-gray-400 text-center sm:text-left">© 2025 Jalaprana. Tous droits réservés.</p>
+            <p className="text-xs text-white text-center sm:text-left">© 2025 Jalaprana. Tous droits réservés.</p>
 
             <div className="flex gap-6">
-              <Link href="/mentions-legales" className="text-xs text-gray-400 hover:text-white transition-colors">
+              <Link href="/mentions-legales" className="text-xs text-white hover:text-white transition-colors">
                 Mentions légales
               </Link>
-              <Link href="/confidentialite" className="text-xs text-gray-400 hover:text-white transition-colors">
+              <Link href="/confidentialite" className="text-xs text-white hover:text-white transition-colors">
                 Confidentialité
               </Link>
             </div>

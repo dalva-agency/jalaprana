@@ -52,12 +52,12 @@ export default function FloatingNavigation() {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 bg-white shadow-lg transition-transform duration-300 ${mounted ? (isVisible ? 'translate-y-0' : '-translate-y-full') : 'translate-y-0'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-20">
           {/* Logo & Title */}
           <div className="flex items-center space-x-3">
             <Link href="/" className="flex items-center space-x-3">
-              <Image src={jalapranaLogo} alt="jalaprana logo" className="h-12 w-12" width={48} height={48} />
-              <span className="text-xl font-bodoni font-semibold">jalaprana</span>
+              <Image src={jalapranaLogo} alt="jalaprana logo" className="h-24 w-24" width={60} height={60} />
+              {/* <span className="text-xl font-bodoni font-semibold">jalaprana</span> */}
             </Link>
           </div>
 
@@ -100,7 +100,6 @@ export default function FloatingNavigation() {
             <select className="border-gray-300 rounded-md py-1 px-2 focus:outline-none">
               <option>FR</option>
               <option>EN</option>
-              <option>ES</option>
             </select>
           </div>
         </div>
