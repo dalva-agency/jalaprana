@@ -44,7 +44,7 @@ const AboutMe = () => {
 
           {/* CTA Buttons */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8, duration: 0.6 }} className="flex flex-wrap gap-4 pt-4">
-            <a href="#contact" className="inline-flex items-center btn-green-base font-medium rounded-lg transition-colors">
+            <a href="/contact" className="inline-flex items-center btn-green-base font-medium rounded-lg transition-colors">
               Me Contacter
             </a>
           </motion.div>
