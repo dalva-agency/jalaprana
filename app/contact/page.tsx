@@ -232,10 +232,10 @@ const ContactPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="mb-20 bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-2xl mx-auto">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-light text-slate-800 mb-2">Contactez-nous</h1>
+        <div className="text-center mb-20">
+          <h1 className="text-5xl font-light text-green-base mb-2">Contactez-nous</h1>
           <p className="text-slate-600">Nous sommes là pour vous aider</p>
         </div>
 
