@@ -1,7 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { Quote, X } from 'lucide-react';
-import { GoQuote } from 'react-icons/go';
 
 interface Testimonial {
   id: number;
@@ -55,8 +54,8 @@ const TestimonialCarousel = () => {
     },
   ];
 
-  // Duplicate testimonials for seamless loop
-  const duplicatedTestimonials = [...testimonials, ...testimonials];
+  // Triple the testimonials for seamless loop
+  const duplicatedTestimonials = [...testimonials, ...testimonials, ...testimonials];
 
   const openModal = (testimonial: Testimonial) => {
     setSelectedTestimonial(testimonial);
@@ -97,33 +96,35 @@ const TestimonialCarousel = () => {
         <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none" />
 
-        {/* Scrolling Container */}
-        <div className="flex space-x-6 animate-scroll">
-          {duplicatedTestimonials.map((testimonial, index) => (
-            <div
-              key={`${testimonial.id}-${index}`}
-              onClick={() => openModal(testimonial)}
-              className="flex-shrink-0 w-80 bg-white rounded-2xl shadow-lg p-8 transform transition-all hover:scale-105 cursor-pointer hover:shadow-xl"
-            >
-              {/* Quote Icon */}
-              <Quote className="w-8 h-8 text-green-base mb-4" />
+        {/* Scrolling Container - Two identical tracks for seamless loop */}
+        <div className="flex">
+          <div className="flex space-x-6 animate-scroll">
+            {duplicatedTestimonials.map((testimonial, index) => (
+              <div
+                key={`${testimonial.id}-${index}`}
+                onClick={() => openModal(testimonial)}
+                className="flex-shrink-0 w-80 bg-white rounded-2xl shadow-lg p-8 transform transition-all hover:scale-105 cursor-pointer hover:shadow-xl"
+              >
+                {/* Quote Icon */}
+                <Quote className="w-8 h-8 text-green-base mb-4" />
 
-              {/* Testimonial Text */}
-              <p className="text-gray-700 text-sm leading-relaxed mb-6 line-clamp-6">{testimonial.text}</p>
+                {/* Testimonial Text */}
+                <p className="text-gray-700 text-sm leading-relaxed mb-6 line-clamp-6">{testimonial.text}</p>
 
-              {/* Author Info */}
-              <div className="flex items-center gap-4">
-                {/* Avatar */}
-                <div className="w-12 h-12 bg-green-base rounded-full flex items-center justify-center text-white font-semibold">{testimonial.avatar}</div>
+                {/* Author Info */}
+                <div className="flex items-center gap-4">
+                  {/* Avatar */}
+                  <div className="w-12 h-12 bg-green-base rounded-full flex items-center justify-center text-white font-semibold">{testimonial.avatar}</div>
 
-                {/* Name and Location */}
-                <div>
-                  <p className="font-semibold text-gray-900">{testimonial.author}</p>
-                  <p className="text-sm text-gray-500">{testimonial.location}</p>
+                  {/* Name and Location */}
+                  <div>
+                    <p className="font-semibold text-gray-900">{testimonial.author}</p>
+                    <p className="text-sm text-gray-500">{testimonial.location}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 
@@ -176,7 +177,8 @@ const TestimonialCarousel = () => {
             transform: translateX(0);
           }
           100% {
-            transform: translateX(-50%);
+            /* Move by exactly 1/3 of the total width (since we tripled the content) */
+            transform: translateX(calc(-100% / 3));
           }
         }
 
@@ -201,7 +203,8 @@ const TestimonialCarousel = () => {
         }
 
         .animate-scroll {
-          animation: scroll 40s linear infinite;
+          /* Calculate animation duration based on content */
+          animation: scroll 30s linear infinite;
         }
 
         .animate-scroll:hover {

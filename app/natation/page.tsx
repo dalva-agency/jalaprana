@@ -1,6 +1,7 @@
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
-import { Clock, MapPin, Activity, Heart, Waves, Wind, Brain, Users, Calendar } from 'lucide-react';
+import { Clock, MapPin, Activity, Heart, Waves, Wind, Brain, Users, Calendar, BicepsFlexed } from 'lucide-react';
+import PriceDisplay from '@/components/price/priceCta';
 
 const SwimmingServicePage = () => {
   const [isVisible, setIsVisible] = useState<{ [key: string]: boolean }>({});
@@ -31,7 +32,7 @@ const SwimmingServicePage = () => {
   const benefits = [
     { icon: Activity, text: "Sollicite l'ensemble du corps sans traumatisme articulaire" },
     { icon: Heart, text: "Améliore l'endurance" },
-    { icon: Activity, text: 'Renforce les muscles en profondeur' },
+    { icon: BicepsFlexed, text: 'Renforce les muscles en profondeur' },
     { icon: Wind, text: 'Développe la capacité respiratoire' },
     { icon: Brain, text: 'A un effet apaisant naturel : aide à libérer le stress, calmer le mental, retrouver un bien-être intérieur' },
     { icon: Users, text: 'Accessible à tous' },
@@ -117,10 +118,16 @@ const SwimmingServicePage = () => {
                 </div>
               </div>
 
-              <button className="mt-6 btn-blue-base font-semibold rounded-full shadow-lg transform transition-all duration-300 hover:scale-103 flex items-center gap-2">
-                <Calendar className="w-5 h-5" />
-                Prendre Rendez-vous
-              </button>
+              <div className="flex items-center justify-between">
+                <button className="btn-blue-base font-semibold rounded-full shadow-lg transform transition-all duration-300 hover:scale-103 flex items-center gap-2">
+                  <Calendar className="w-5 h-5" />
+                  Prendre Rendez-vous
+                </button>
+                <div className="flex gap-4">
+                  <PriceDisplay amount={20} currency="EUR" size="small" variant="primary" />
+                  <PriceDisplay amount={30} currency="EUR" size="small" variant="primary" />
+                </div>
+              </div>
             </div>
           </div>
         </div>

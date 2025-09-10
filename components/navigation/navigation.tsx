@@ -15,6 +15,7 @@ export default function Navigation() {
     { label: 'Méditation', id: 'bien-etre', href: '/meditation' },
     { label: 'Cours de natation', id: 'cours', href: '/natation' },
     { label: 'Présentation', id: 'presentation', href: '/presentation' },
+    { label: 'Contact', id: 'contact', href: '/contact' },
   ];
 
   const toggleMenu = () => setIsOpen(!isOpen);

@@ -84,7 +84,7 @@ const AboutMe = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.6 }}
-            className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 bg-white px-6 py-3 rounded-full shadow-lg border border-slate-200 z-20"
+            className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 bg-white md:px-6 md:py-3 px-4 py-2 rounded-full shadow-lg border border-slate-200 z-20 whitespace-nowrap"
           >
             <p className="text-sm font-medium text-slate-700">{"10+ ans d'expérience"}</p>
           </motion.div>

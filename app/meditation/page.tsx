@@ -1,6 +1,7 @@
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
 import { Clock, MapPin, Shirt, Brain, Heart, Shield, Sparkles, Focus, Lightbulb, Smile, Calendar } from 'lucide-react';
+import PriceDisplay from '@/components/price/priceCta';
 
 const MeditationServicePage = () => {
   const [isVisible, setIsVisible] = useState<{ [key: string]: boolean }>({});
@@ -125,10 +126,16 @@ const MeditationServicePage = () => {
                 </div>
               </div>
 
-              <button className="mt-6 btn-orange-base font-semibold rounded-full shadow-lg transform transition-all duration-300 hover:scale-103 flex items-center gap-2">
-                <Calendar className="w-5 h-5" />
-                Prendre Rendez-vous
-              </button>
+              <div className="flex items-center justify-between">
+                <button className="btn-orange-base font-semibold rounded-full shadow-lg transform transition-all duration-300 hover:scale-103 flex items-center gap-2">
+                  <Calendar className="w-5 h-5" />
+                  Prendre Rendez-vous
+                </button>
+
+                <div>
+                  <PriceDisplay amount={30} currency="EUR" size="small" variant="warning" />
+                </div>
+              </div>
             </div>
           </div>
         </div>

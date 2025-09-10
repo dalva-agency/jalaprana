@@ -22,7 +22,8 @@ export default function Home({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
   // Check if we're on a service page or contact page
-  const isServiceOrContactPage = pathname?.includes('/natation') || pathname?.includes('/meditation') || pathname?.includes('/reiki') || pathname?.includes('presentation');
+  const isServiceOrContactPage =
+    pathname?.includes('/natation') || pathname?.includes('/meditation') || pathname?.includes('/reiki') || pathname?.includes('presentation') || pathname?.includes('contact');
 
   // Determine background color based on route
   const getBackgroundClass = () => {
@@ -32,32 +33,18 @@ export default function Home({ children }: { children: React.ReactNode }) {
       return 'from-yellow-50 to-white';
     } else if (pathname?.includes('/reiki')) {
       return 'from-green-50 to-white';
+    } else if (pathname?.includes('/contact')) {
+      return 'bg-gray-50';
     }
-    // Default background
+    // Default backgrounds
     return 'white';
   };
-
-  // Determine if we should show the background pattern
-  const shouldShowPattern = pathname?.includes('/natation') || pathname?.includes('/meditation') || pathname?.includes('/reiki');
 
   return (
     <html lang="en" className={`${bodoni.variable} ${roboto.variable}`}>
       <body>
         {/* Full width background wrapper */}
         <div className={`min-h-screen bg-gradient-to-b ${getBackgroundClass()} relative`}>
-          {/* Background Pattern - Full width (only for service pages) */}
-          {shouldShowPattern && (
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                backgroundImage: 'url("/assets/images/background.jpg")',
-                backgroundRepeat: 'repeat',
-                backgroundSize: '500px 500px',
-                opacity: 0.04,
-              }}
-            />
-          )}
-
           {/* Content with max-width and padding */}
           <div className="relative z-10">
             <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">

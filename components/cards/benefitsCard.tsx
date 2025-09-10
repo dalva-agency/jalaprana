@@ -3,7 +3,7 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
 import { FaEuroSign } from 'react-icons/fa';
 import { FiClock } from 'react-icons/fi';
@@ -24,7 +24,7 @@ export type BenefitsCardProps = {
   descriptionItems?: string[];
   href?: string;
   cta?: string;
-  imageSrc: string;
+  imageSrc: string | StaticImageData;
   imageAlt?: string;
   accent?: 'green' | 'amber' | 'teal' | 'sky' | 'rose' | 'emerald' | 'indigo';
   prices?: PriceItem[];

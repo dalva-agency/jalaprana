@@ -16,6 +16,7 @@ export default function FloatingNavigation() {
     { label: 'Méditation', id: 'meditation', href: '/meditation' },
     { label: 'Cours de natation', id: 'natation', href: '/natation' },
     { label: 'Présentation', id: 'presentation', href: '/presentation' },
+    { label: 'Contact', id: 'contact', href: '/contact' },
   ];
 
   useEffect(() => {
@@ -56,7 +57,7 @@ export default function FloatingNavigation() {
           {/* Logo & Title */}
           <div className="flex items-center space-x-3">
             <Link href="/" className="flex items-center space-x-3">
-              <Image src={jalapranaLogo} alt="jalaprana logo" className="h-24 w-24" width={60} height={60} />
+              <Image src={jalapranaLogo} alt="jalaprana logo" className="h-24 w-24" />
               {/* <span className="text-xl font-bodoni font-semibold">jalaprana</span> */}
             </Link>
           </div>

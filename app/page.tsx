@@ -6,9 +6,10 @@ import React from 'react';
 import home_image from '../public/assets/images/Jalaprana-home.jpg';
 import BenefitsCard from '@/components/cards/benefitsCard';
 import Link from 'next/link';
-import jalapranaLogo from '@/assets/images/jalaprana-logo.png';
 import { useState, useEffect } from 'react';
 import TestimonialCarousel from '@/components/testimonial/carrousel';
+import meditation from '@/assets/images/bloc-meditation-from-jalaprana.jpg';
+import natation from '@/assets/images//bloc-natation-from-jalaprana.jpg';
 
 const HeroSection = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -27,12 +28,11 @@ const HeroSection = () => {
   const overlayOpacity = Math.max(0, 0.2 - scrollY / 600);
 
   return (
-    <div className="relative w-full h-[800px] border-2 border-gray-200 rounded-xl mt-20 overflow-hidden">
+    <div className="relative w-full h-[500px] md:h-[650px] lg:h-[800px] border-2 border-gray-200 rounded-xl mt-20 overflow-hidden">
+      {' '}
       <Image src={home_image} alt="Meditation by the sea" fill className="object-cover object-bottom" priority />
-
       {/* Dynamic black overlay that fades with scroll */}
       <div className="absolute inset-0 bg-black transition-opacity duration-300 ease-out" style={{ opacity: overlayOpacity }} />
-
       {/* Content */}
       <div className="absolute inset-0 flex flex-col top-20 items-center text-center px-6">
         <div className="font-bodoni font-bold text-3xl sm:text-4xl lg:text-5xl max-w-[800px] space-y-6 mb-4">
@@ -71,6 +71,7 @@ export default function Page() {
     { label: 'Méditation', id: 'bien-etre', href: '/meditation' },
     { label: 'Cours de natation', id: 'cours', href: '/natation' },
     { label: 'Présentation', id: 'presentation', href: '/presentation' },
+    { label: 'Contact', id: 'contact', href: '/contact' },
   ];
 
   return (
@@ -118,7 +119,7 @@ export default function Page() {
             description={`Pratique mentale qui consiste à porter son attention sur l’instant présent, afin de favoriser la clarté mentale, la détente et la stabilité émotionnelle.`}
             href="/meditation"
             cta="En savoir plus"
-            imageSrc="https://images.unsplash.com/photo-1444312645910-ffa973656eba?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8bWVkaXRhdGlvbnxlbnwwfHwwfHx8Mg%3D%3D"
+            imageSrc={meditation}
             imageAlt="Séance de méditation"
             accent="amber"
             prices={[{ title: '1 élève', amount: 30, duration: '30min - 45min' }]}
@@ -132,7 +133,7 @@ export default function Page() {
             description={`Apprentissage & perfectionnement : pour évoluer dans l’eau à son rythme selon ses propres objectifs. Les cours s’adressent aux enfants comme aux adultes, du niveau débutant au perfectionnement. `}
             href="/natation"
             cta="En savoir plus"
-            imageSrc="https://images.unsplash.com/photo-1562205932-623cd8f3867c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YXF1YXRpYyUyMGFjdGl2aXR5JTIwcG9vbHxlbnwwfHwwfHx8Mg%3D%3D"
+            imageSrc={natation}
             imageAlt="Cours en piscine"
             accent="teal"
             prices={[
