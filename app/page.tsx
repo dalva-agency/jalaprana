@@ -52,14 +52,16 @@ const HeroSection = () => {
             Reiki, méditation <span className="text-[26px]">&</span> cours de natation
           </h1>
         </div>
-        <button
-          className="font-medium font-roboto mt-5 py-3 px-8 text-sm rounded-full cursor-pointer transition-all duration-200 
+        <Link href="/contact">
+          <button
+            className="font-medium font-roboto mt-5 py-3 px-8 text-sm rounded-full cursor-pointer transition-all duration-200 
              bg-white/20 backdrop-blur-sm border border-white/30 text-white
              hover:bg-white/30 hover:border-white/50 hover:shadow-lg
              shadow-[0_4px_12px_rgba(255,255,255,0.2)]"
-        >
-          Prendre rendez-vous
-        </button>
+          >
+            Prendre rendez-vous
+          </button>
+        </Link>
       </div>
     </div>
   );
