@@ -51,8 +51,8 @@ export default function Navigation() {
         {/* Language switcher */}
         <div className="hidden md:flex md:items-center">
           <select className="border-gray-300 rounded-md py-1 px-2 focus:outline-none">
-            <option>EN</option>
             <option>FR</option>
+            <option>EN</option>
             <option>ES</option>
           </select>
         </div>
@@ -71,8 +71,8 @@ export default function Navigation() {
           {renderNavLinks()}
           <div className="flex justify-center pt-4">
             <select className="border-gray-300 rounded-md py-1 px-2 focus:outline-none">
-              <option>EN</option>
               <option>FR</option>
+              <option>EN</option>
               <option>ES</option>
             </select>
           </div>

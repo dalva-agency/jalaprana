@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Clock, MapPin, Activity, Heart, Waves, Wind, Brain, Users, Calendar, BicepsFlexed } from 'lucide-react';
 import PriceDisplay from '@/components/price/priceCta';
+import Link from 'next/link';
 
 const SwimmingServicePage = () => {
   const [isVisible, setIsVisible] = useState<{ [key: string]: boolean }>({});
@@ -119,10 +120,12 @@ const SwimmingServicePage = () => {
               </div>
 
               <div className="flex items-center justify-between">
-                <button className="btn-blue-base font-semibold rounded-full shadow-lg transform transition-all duration-300 hover:scale-103 flex items-center gap-2">
-                  <Calendar className="w-5 h-5" />
-                  Prendre Rendez-vous
-                </button>
+                <Link href="/contact">
+                  <button className="btn-blue-base font-semibold rounded-full shadow-lg transform transition-all duration-300 hover:scale-103 flex items-center gap-2">
+                    <Calendar className="w-5 h-5" />
+                    Prendre Rendez-vous
+                  </button>
+                </Link>
                 <div className="flex gap-4">
                   <PriceDisplay amount={20} currency="EUR" size="small" variant="primary" />
                   <PriceDisplay amount={30} currency="EUR" size="small" variant="primary" />
