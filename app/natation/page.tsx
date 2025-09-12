@@ -127,8 +127,8 @@ const SwimmingServicePage = () => {
                   </button>
                 </Link>
                 <div className="flex gap-4">
-                  <PriceDisplay amount={20} currency="EUR" size="small" variant="primary" />
-                  <PriceDisplay amount={30} currency="EUR" size="small" variant="primary" />
+                  <PriceDisplay amount={20} label="1 personne -" currency="EUR" size="small" variant="primary" />
+                  <PriceDisplay amount={30} label="2 personnes -" currency="EUR" size="small" variant="primary" />
                 </div>
               </div>
             </div>

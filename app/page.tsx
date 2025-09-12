@@ -29,7 +29,6 @@ const HeroSection = () => {
 
   return (
     <div className="relative w-full h-[500px] md:h-[650px] lg:h-[800px] border-2 border-gray-200 rounded-xl mt-20 overflow-hidden">
-      {' '}
       <Image src={home_image} alt="Meditation by the sea" fill className="object-cover object-bottom" priority />
       {/* Dynamic black overlay that fades with scroll */}
       <div className="absolute inset-0 bg-black transition-opacity duration-300 ease-out" style={{ opacity: overlayOpacity }} />
@@ -52,9 +51,27 @@ const HeroSection = () => {
             Reiki, méditation <span className="text-[26px]">&</span> cours de natation
           </h1>
         </div>
+
+        {/* Button - normal position for screens ≥400px */}
+        <div className="hidden min-[400px]:block">
+          <Link href="/contact">
+            <button
+              className="font-medium font-roboto mt-5 py-3 px-8 text-sm rounded-full cursor-pointer transition-all duration-200 
+               bg-white/20 backdrop-blur-sm border border-white/30 text-white
+               hover:bg-white/30 hover:border-white/50 hover:shadow-lg
+               shadow-[0_4px_12px_rgba(255,255,255,0.2)]"
+            >
+              Prendre rendez-vous
+            </button>
+          </Link>
+        </div>
+      </div>
+
+      {/* Button positioned at bottom for screens <400px */}
+      <div className="absolute inset-x-0 bottom-8 flex justify-center items-center px-6 min-[400px]:hidden">
         <Link href="/contact">
           <button
-            className="font-medium font-roboto mt-5 py-3 px-8 text-sm rounded-full cursor-pointer transition-all duration-200 
+            className="font-medium font-roboto py-3 px-8 text-sm rounded-full cursor-pointer transition-all duration-200 
              bg-white/20 backdrop-blur-sm border border-white/30 text-white
              hover:bg-white/30 hover:border-white/50 hover:shadow-lg
              shadow-[0_4px_12px_rgba(255,255,255,0.2)]"
