@@ -20,17 +20,16 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Tous les champs sont requis' }, { status: 400 });
     }
 
-    // Log for debugging in development
-    if (process.env.NODE_ENV === 'development') {
-      console.log('📧 Contact Form Submission:', {
-        name,
-        email,
-        phone,
-        country,
-        message,
-        recipient: RECIPIENT_EMAIL,
-      });
-    }
+    // Log for debugging
+    console.log('📧 Contact Form Submission:', {
+      name,
+      email,
+      phone,
+      country,
+      message,
+      recipient: RECIPIENT_EMAIL,
+      environment: process.env.NODE_ENV,
+    });
 
     try {
       // Render email to HTML
@@ -46,10 +45,10 @@ export async function POST(request: Request) {
 
       // Send main notification email
       const { data: adminEmail, error: adminError } = await resend.emails.send({
-        from: 'Jalaprana Test <onboarding@resend.dev>',
+        from: process.env.NODE_ENV === 'development' ? 'Jalaprana Test <onboarding@resend.dev>' : 'Jalaprana <onboarding@resend.dev>', // FIXED: Use resend.dev in production too until domain is verified
         to: [RECIPIENT_EMAIL!],
         replyTo: email,
-        subject: `[TEST] Nouveau message de ${name}`,
+        subject: process.env.NODE_ENV === 'development' ? `[TEST] Nouveau message de ${name}` : `Nouveau message de ${name}`,
         html: adminHtml,
         headers: process.env.NODE_ENV === 'development' ? { 'X-Test-Mode': 'true' } : undefined,
       });
@@ -61,37 +60,26 @@ export async function POST(request: Request) {
 
       console.log('✅ Email sent successfully:', adminEmail?.id);
 
-      // For testing: Also send the confirmation email to YOUR email
-      // In production, this would go to the customer
-      if (process.env.NODE_ENV === 'development') {
-        try {
-          const confirmHtml = await render(ConfirmationEmail({ name }));
+      // Send confirmation email
+      try {
+        const confirmHtml = await render(ConfirmationEmail({ name }));
 
-          const { data: confirmEmail } = await resend.emails.send({
-            from: 'Jalaprana <onboarding@resend.dev>',
-            to: [email!],
-            subject: `[TEST - Confirmation for ${name}] Jalaprana - Confirmation de votre message`,
-            html: confirmHtml,
-          });
+        const { data: confirmEmail, error: confirmError } = await resend.emails.send({
+          from: process.env.NODE_ENV === 'development' ? 'Jalaprana <onboarding@resend.dev>' : 'Jalaprana <onboarding@resend.dev>', // FIXED: Use resend.dev until domain is verified
+          to: [email], // Send to the person who submitted the form
+          subject: process.env.NODE_ENV === 'development' ? `[TEST - Confirmation] Jalaprana - Confirmation de votre message` : 'Jalaprana - Confirmation de votre message',
+          html: confirmHtml,
+        });
 
+        if (confirmError) {
+          console.error('Confirmation email error:', confirmError);
+          // Don't throw - we still want to return success if main email was sent
+        } else {
           console.log('✅ Confirmation email sent:', confirmEmail?.id);
-        } catch (confirmError) {
-          console.error('Confirmation email error:', confirmError);
         }
-      } else {
-        // Production: Send to actual customer
-        try {
-          const confirmHtml = await render(ConfirmationEmail({ name }));
-
-          await resend.emails.send({
-            from: 'Jalaprana <onboarding@resend.dev>',
-            to: email,
-            subject: 'Jalaprana - Confirmation de votre message',
-            html: confirmHtml,
-          });
-        } catch (confirmError) {
-          console.error('Confirmation email error:', confirmError);
-        }
+      } catch (confirmError) {
+        console.error('Confirmation email error:', confirmError);
+        // Don't fail the whole request if confirmation fails
       }
 
       // Return success
@@ -108,17 +96,14 @@ export async function POST(request: Request) {
       if (sendError && typeof sendError === 'object' && 'statusCode' in sendError && sendError.statusCode === 403) {
         console.error('🔒 Resend Authentication Error:', sendError && typeof sendError === 'object' && 'message' in sendError ? sendError.message : 'Authentication failed');
 
-        // In development, provide helpful error message
-        if (process.env.NODE_ENV === 'development') {
-          return NextResponse.json(
-            {
-              error: 'Configuration email requise',
-              details: "Pour tester en local, assurez-vous d'utiliser votre email Resend (jalaprana@proton.me) comme destinataire.",
-              testMode: true,
-            },
-            { status: 403 }
-          );
-        }
+        return NextResponse.json(
+          {
+            error: "Erreur d'authentification email",
+            details: process.env.NODE_ENV === 'development' ? 'Vérifiez votre configuration Resend' : 'Erreur de configuration du service email',
+            testMode: process.env.NODE_ENV === 'development',
+          },
+          { status: 403 }
+        );
       }
 
       throw sendError;
