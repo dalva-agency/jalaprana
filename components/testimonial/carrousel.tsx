@@ -200,23 +200,6 @@ const TestimonialCarousel = () => {
             </div>
           ))}
         </div>
-
-        {/* Scroll Indicators */}
-        <div className="flex justify-center mt-8 gap-2">
-          {testimonials.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => {
-                if (scrollContainerRef.current) {
-                  const scrollPosition = (340 + 24) * index; // card width + gap
-                  scrollContainerRef.current.scrollTo({ left: scrollPosition, behavior: 'smooth' });
-                }
-              }}
-              className={`h-2 rounded-full transition-all duration-300 ${index === 0 ? 'w-8 bg-green-base' : 'w-2 bg-gray-300 hover:bg-gray-400'}`}
-              aria-label={`Aller au témoignage ${index + 1}`}
-            />
-          ))}
-        </div>
       </div>
 
       {/* Modal */}
