@@ -118,7 +118,7 @@ const ContactPage: React.FC = () => {
       else if (formData.phone.startsWith('+41')) country = 'Suisse';
       else if (formData.phone.startsWith('+44')) country = 'Royaume-Uni';
       else if (formData.phone.startsWith('+1') || formData.phone.startsWith('(')) country = 'États-Unis';
-      console.log({ formData: formData });
+
       // Send to your API endpoint
       const response = await fetch('/api/contact', {
         method: 'POST',

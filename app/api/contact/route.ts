@@ -7,8 +7,6 @@ import { render } from '@react-email/render';
 // Initialize Resend
 const resend = new Resend(process.env.NODE_ENV === 'development' ? process.env.RESEND_API_KEY_DEV : process.env.RESEND_API_KEY);
 
-// FOR TESTING: Use your Resend account email
-// FOR PRODUCTION: Use your client's email after domain verification
 const RECIPIENT_EMAIL = process.env.NODE_ENV === 'development' ? process.env.RECIPIENT_EMAIL_DEV : process.env.RECIPIENT_EMAIL || 'jalaprana@proton.me';
 
 export async function POST(request: Request) {
@@ -71,7 +69,7 @@ export async function POST(request: Request) {
 
           const { data: confirmEmail } = await resend.emails.send({
             from: 'Jalaprana <onboarding@resend.dev>',
-            to: [RECIPIENT_EMAIL!],
+            to: [email!],
             subject: `[TEST - Confirmation for ${name}] Jalaprana - Confirmation de votre message`,
             html: confirmHtml,
           });
