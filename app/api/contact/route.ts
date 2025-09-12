@@ -84,8 +84,8 @@ export async function POST(request: Request) {
           const confirmHtml = await render(ConfirmationEmail({ name }));
 
           await resend.emails.send({
-            from: 'Jalaprana <noreply@yourdomain.com>', // Your verified domain
-            to: [email], // Customer's email
+            from: 'Jalaprana <noreply@yourdomain.com>',
+            to: email,
             subject: 'Jalaprana - Confirmation de votre message',
             html: confirmHtml,
           });
